@@ -8,18 +8,18 @@ This repository contains an example AWS Lambda Docker image which uses Rasterio 
 
 ## Table of Contents
 
-- [Background](#background)
-- [Install](#install)
-- [Usage](#usage)
-- [API](#api)
-- [Deploy](#deploy)
-- [Maintainers](#maintainers)
-- [Contributing](#contributing)
-- [License](#license)
+- [aws-lambda-docker-rasterio](#aws-lambda-docker-rasterio)
+  - [Table of Contents](#table-of-contents)
+  - [Background](#background)
+  - [Install](#install)
+  - [Usage](#usage)
+  - [API](#api)
+    - [main](#main)
+  - [Deploy](#deploy)
 
 ## Background
 
-Previously Addresscloud built stripped-down Python packages to include Rasterio in AWS Lambda functions, using a script developed by Mapbox (see: https://github.com/mapbox/aws-lambda-python-packages). At re:Invent 2020 AWS launched support for custom container images to be executed as Lambda functions (see: https://aws.amazon.com/blogs/aws/new-for-aws-lambda-container-image-support/), making the use of Rasterio inside AWs Lambda's much easier and more accessible.
+Previously Addresscloud built stripped-down Python packages to include Rasterio in AWS Lambda functions, using a script developed by Mapbox (see: https://github.com/mapbox/aws-lambda-python-packages). At re:Invent 2020 AWS launched support for custom container images to be executed as Lambda functions (see: https://aws.amazon.com/blogs/aws/new-for-aws-lambda-container-image-support/), making the use of Rasterio inside AWS Lambda's much easier and more accessible.
 
 
 ## Install
@@ -31,7 +31,7 @@ docker build -t rasterio .
 
 ## Usage
 
-The handler function reads the pixel values from a COG within a specificed polygon.
+The handler function reads the pixel values from a COG within a specified polygon.
 
 The Docker container includes the Lambda Runtime Interface Emulator so you can test the functions by running the images with Docker locally:
 
@@ -111,6 +111,11 @@ Example response:
 "[[[0.0, 0.0, 0.0, 0.4298372268676758, 3.1277780532836914, 3.167654514312744, 3.940603017807007, 8.856860160827637, 14.149166107177734, 19.369218826293945, 21.710126876831055, 28.996673583984375, 34.88554763793945, 41.25983428955078, 48.78239822387695, 56.83858108520508, 65.9479751586914], ...]]"
 ```
 
+Lambda response:
+```
+Init Duration: 0.79 ms  Duration: 1717.92 ms  Billed Duration: 1800 ms  Memory Size: 3008 MB    Max Memory Used: 3008 MB
+```
+
 ## Deploy
 
 1. Build Docker image locally
@@ -118,17 +123,3 @@ Example response:
 3. Create Lambda using container image
 
 See this tutorial for more details: https://aws.amazon.com/blogs/aws/new-for-aws-lambda-container-image-support/
-
-## Maintainers
-
-[@tomasholderness](https://github.com/tomasholderness)
-
-## Contributing
-
-PRs accepted.
-
-Small note: If editing the README, please conform to the [standard-readme](https://github.com/RichardLitt/standard-readme) specification.
-
-## License
-
-MIT © 2021 Addresscloud Limited
